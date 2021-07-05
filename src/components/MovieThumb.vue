@@ -1,0 +1,32 @@
+<template>
+  <div>
+<a :href="`movie/${movie.imdbID}`">
+        <div class="movie">
+          <q-img
+            :src="movie.Poster"
+            :ratio="9 / 16"
+            spinner-color="primary"
+            spinner-size="82px"
+          />
+          <div class="title">{{ movie.Title }}</div>
+        </div>
+</a>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    movie: Object,
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.movie {
+  padding: 20px;
+}
+.title {
+  text-align: center;
+}
+</style>
