@@ -11,25 +11,17 @@
           @click="toggleLeftDrawer"
         />
 
-        <q-toolbar-title>
-          MovieDB
-        </q-toolbar-title>
+        <q-toolbar-title> MovieDB </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+        <div>
+          <q-btn color="primary" icon="check" @click="toggleDarkMode" />
+        </div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-      class="bg-grey-1"
-    >
+    <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-grey-8">
       <q-list>
-        <q-item-label
-          header
-          class="text-grey-8"
-        >
+        <q-item-label header class="text-grey-1">
           Essential Links
         </q-item-label>
 
@@ -48,45 +40,55 @@
 </template>
 
 <script>
-import EssentialLink from 'components/EssentialLink.vue'
+import EssentialLink from "components/EssentialLink.vue";
 
 const linksList = [
   {
-    title: 'Home',
-    icon: 'school',
-    link: '/',
+    title: "Home",
+    icon: "school",
+    link: "/",
   },
   {
-    title: 'Search',
-    icon: 'school',
-    link: 'search',
+    title: "Search",
+    icon: "school",
+    link: "search",
   },
   {
-    title: 'Movie',
-    icon: 'school',
-    link: 'movie',
+    title: "Movie",
+    icon: "school",
+    link: "movie",
   },
 ];
 
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, onMounted } from "vue";
+import { useQuasar } from "quasar";
 
 export default defineComponent({
-  name: 'MainLayout',
+  name: "MainLayout",
 
   components: {
-    EssentialLink
+    EssentialLink,
   },
 
-  setup () {
-    const leftDrawerOpen = ref(false)
+  setup() {
+    const leftDrawerOpen = ref(false);
+    const $q = useQuasar();
+    const toggleDarkMode = () => {
+      $q.dark.toggle();
+    };
+
+    onMounted(() => {
+      $q.dark.set(true)
+    })
 
     return {
       essentialLinks: linksList,
       leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
-})
+      toggleDarkMode,
+      toggleLeftDrawer() {
+        leftDrawerOpen.value = !leftDrawerOpen.value;
+      },
+    };
+  },
+});
 </script>
