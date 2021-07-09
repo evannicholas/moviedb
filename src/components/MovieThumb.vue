@@ -1,16 +1,16 @@
 <template>
   <div>
-<a :href="`movie/${movie.imdbID}`">
+    <router-link :to="`movie/${movie.imdbID}`">
         <div class="movie">
           <q-img
             :src="movie.Poster"
-            :ratio="9 / 16"
+            :ratio="9/16"
             spinner-color="primary"
             spinner-size="82px"
           />
           <div class="title">{{ movie.Title }}</div>
         </div>
-</a>
+    </router-link>
   </div>
 </template>
 

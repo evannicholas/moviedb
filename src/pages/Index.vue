@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div class="col-12 col-lg-3" v-for="movie in movies" :key="movie.imdbID">
+    <div class="col-6 col-lg-2" v-for="movie in movies" :key="movie.imdbID">
       <MovieThumb :movie="movie"></MovieThumb>
     </div>
   </div>
