@@ -2,24 +2,28 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
+        <!-- <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
-        />
+        /> -->
 
-        <q-toolbar-title> MovieDB </q-toolbar-title>
+        <q-toolbar-title
+          ><router-link to="/"
+            ><q-icon name="movie" /> Quasar Movie Database</router-link
+          ></q-toolbar-title
+        >
 
         <div>
-          <q-btn color="primary" icon="check" @click="toggleDarkMode" />
+          <q-btn color="secondary" icon="dark_mode" @click="toggleDarkMode" />
         </div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered class="bg-grey-8">
+    <q-drawer v-model="leftDrawerOpen" bordered class="bg-grey-8">
       <q-list>
         <q-item-label header class="text-grey-1">
           Essential Links
@@ -78,8 +82,8 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      $q.dark.set(true)
-    })
+      $q.dark.set(true);
+    });
 
     return {
       essentialLinks: linksList,
@@ -92,3 +96,9 @@ export default defineComponent({
   },
 });
 </script>
+<style lang="scss" scoped>
+a {
+  color: white;
+  text-decoration: none;
+}
+</style>

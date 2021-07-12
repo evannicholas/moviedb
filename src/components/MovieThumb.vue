@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link :to="`/movie/${movie.imdbID}`">
+    <router-link :to="`/movie/${movie.imdbID}`" class="q-pa-md">
         <div class="movie">
           <q-img
             :src="movie.Poster"
@@ -8,7 +8,7 @@
             spinner-color="primary"
             spinner-size="82px"
           />
-          <div class="title">{{ movie.Title }}</div>
+          <div class="title q-mt-md">{{ movie.Title }}</div>
         </div>
     </router-link>
   </div>
@@ -26,7 +26,10 @@ export default {
 .movie {
   padding: 20px;
 }
-.title {
+a {
   text-align: center;
+  color: white;
+  text-decoration: none;
 }
+
 </style>

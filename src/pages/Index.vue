@@ -1,28 +1,21 @@
 <template>
-  <div class="row">
-    <div class="col-6 col-lg-2" v-for="movie in movies" :key="movie.imdbID">
-      <MovieThumb :movie="movie"></MovieThumb>
-    </div>
+  <div>
+    <q-input class="q-pa-xl" rounded outlined v-model="query" type="text" label="Search" />
+    <SearchResult :query="query" />
   </div>
 </template>
 
 <script>
-import { api } from "boot/axios";
-import MovieThumb from "components/MovieThumb.vue";
+import SearchResult from "components/SearchResult.vue";
 
 export default {
   components: {
-    MovieThumb,
+    SearchResult,
   },
   data() {
     return {
-      movies: [],
+      query: "",
     };
-  },
-  mounted() {
-    api
-      .get("https://www.omdbapi.com/?apikey=57edaaef&r=json&s=harry")
-      .then((response) => (this.movies = response.data.Search));
   },
 };
 </script>
